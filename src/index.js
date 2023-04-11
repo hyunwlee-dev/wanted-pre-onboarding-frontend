@@ -3,11 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./app/app";
 import reportWebVitals from "./reportWebVitals";
+import { GlobalStateProvider } from "./contexts/globalState";
+import {
+  EmailStateProvider,
+  PasswordStateProvider,
+} from "./contexts/signUpState";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <GlobalStateProvider>
+      <App />
+    </GlobalStateProvider>
   </React.StrictMode>
 );
 

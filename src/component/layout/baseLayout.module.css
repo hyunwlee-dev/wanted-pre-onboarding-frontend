@@ -5,6 +5,5 @@
   min-height: 100vh;
 }
 .Main {
-  flex: 1;
-  outline: 3px solid black;
+  flex-grow: 1;
 }

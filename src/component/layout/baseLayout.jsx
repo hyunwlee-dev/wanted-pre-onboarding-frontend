@@ -1,8 +1,8 @@
-import {Header } from "../header/header";
-import {Footer } from "../footer/footer";
+import { Header } from "../header/header";
+import { Footer } from "../footer/footer";
 import { node, string } from "prop-types";
-import {Container } from '../container/contianer';
-import classes from './baseLayout.module.css';
+import { Container } from "../container/contianer";
+import classes from "./baseLayout.module.css";
 
 /* Component ---------------------------------------------------------------- */
 

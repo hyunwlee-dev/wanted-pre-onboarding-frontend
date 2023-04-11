@@ -42,14 +42,14 @@ export function Header() {
               <Button size="small" onClick={onLogout} label="Log out" />
             </>
           ) : ( */}
-            <>
-              {/* <Button size="small" onClick={onLogin} label="Log in" /> */}
-              <Button
-                size="small"
-                // onClick={onCreateAccount}
-                label="Sign up"
-              />
-            </>
+          <>
+            {/* <Button size="small" onClick={onLogin} label="Log in" /> */}
+            <Button
+              size="small"
+              // onClick={onCreateAccount}
+              label="Sign up"
+            />
+          </>
           {/* )} */}
         </div>
       </div>

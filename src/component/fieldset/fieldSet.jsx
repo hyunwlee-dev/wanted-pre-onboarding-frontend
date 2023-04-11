@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import classes from "./fieldSet.module.css";
+import classes from "./fieldset.module.css";
 
 export function Fieldset({ className, legend, children, ...restProps }) {
   const combineClassNames = `${classes.fieldset} ${className}`.trim();

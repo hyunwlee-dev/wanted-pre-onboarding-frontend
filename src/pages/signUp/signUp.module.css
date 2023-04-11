@@ -1,0 +1,82 @@
+.BaseLayout > main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.SignUp {
+  outline: 4px solid black;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
+  background-color: #8b00ff;
+}
+
+.SignUpTitle {
+  padding: 50px 0;
+  font-size: 32px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+.Fieldset {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #fff;
+}
+.EmailWrapper,
+.PwWrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.EmailWrapper,
+.PwWrapper,
+.ButtonWrapper {
+  border-top: 2px solid var(--color-black);
+}
+
+.EmailLabel,
+.PwLabel {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 1 0 300px;
+  justify-content: end;
+  align-items: center;
+  padding-right: 40px;
+}
+
+.EmailPart,
+.PwPart {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.EmailInput,
+.PwInput {
+  flex: 1 1;
+  /* width: 100%; */
+}
+.EmailInput:focus,
+.PwInput:focus {
+  outline: none;
+}
+
+.ButtonWrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.SubmitButton {
+  border: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 70px;
+  font-size: 20px;
+  transition: all ease 300ms;
+}
+
+.SubmitButton:hover {
+  background-color: #8b00ff;
+}

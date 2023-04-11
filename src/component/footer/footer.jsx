@@ -1,6 +1,6 @@
-import classes from './footer.module.css';
-import { Container } from '../container/contianer';
-import { useRef } from 'react';
+import classes from "./footer.module.css";
+import { Container } from "../container/contianer";
+import { useRef } from "react";
 
 /* Component ---------------------------------------------------------------- */
 

@@ -2,15 +2,16 @@ import PropTypes from "prop-types";
 
 import classes from "./emailInput.module.css";
 import { debounce } from "../../../utils/debounce";
+import { useMemo } from "react";
+import { useEmailState } from "../../../contexts/signUpState";
 export function EmailInput({
   id: useId,
   className,
   placeholder,
-  onChange,
   ...restProps
 }) {
-  const combineClassName = `${classes.input} ${className}`.trim();
-
+  const combineClassName = `${classes.Input} ${className}`.trim();
+  const { email, updateEmail } = useEmailState();
   return (
     <input
       className={combineClassName}
@@ -18,7 +19,8 @@ export function EmailInput({
       maxLength="50"
       placeholder={placeholder}
       type="email"
-      onChange={(e) => debounce(onChange(e, 500))}
+      value={email}
+      onChange={(e) => debounce(updateEmail(e.target.value), 500)}
       {...restProps}
     />
   );
