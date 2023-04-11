@@ -1,0 +1,10 @@
+.BaseLayout {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  min-height: 100vh;
+}
+.Main {
+  flex: 1;
+  outline: 3px solid black;
+}
