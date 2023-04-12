@@ -41,8 +41,8 @@ export function SignUp() {
                     id={emailId}
                     placeholder="예) wanted@wanted.com"
                   />
+                  <EmailValidation />
                 </EmailStateProvider>
-                <EmailValidation />
               </Container>
             </Container>
 
@@ -62,8 +62,8 @@ export function SignUp() {
                     id={passwordId}
                     placeholder="비밀번호를 입력해주세요."
                   />
+                  <PasswordValidation />
                 </PasswordStateProvider>
-                <PasswordValidation />
               </Container>
             </Container>
             <Container className={classes.ButtonWrapper}>
