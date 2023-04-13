@@ -1,12 +1,9 @@
 import { Fragment, useMemo } from "react";
 
 import classes from "./emailValidation.module.css";
-import { useEmailState } from "../../../contexts/signUpState";
 import { isEmail } from "../../../utils/validator";
 
-export function EmailValidation({ className }) {
-  const { email } = useEmailState();
-
+export function EmailValidation({ className, email }) {
   const checkIsValidateEmail = useMemo(() => {
     if (email.length > 0 && !isEmail(email)) return classes.invalid;
     return classes.valid;

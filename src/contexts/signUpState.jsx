@@ -1,70 +1,57 @@
 import PropTypes from "prop-types";
-import { useState, createContext, useMemo, useContext } from "react";
+import {
+  useState,
+  createContext,
+  useMemo,
+  useContext,
+  useCallback,
+} from "react";
+import { isEmail, isPassword } from "../utils/validator";
 
-const EmailStateContext = createContext();
-const PasswordStateContext = createContext();
+const SignUpContext = createContext();
 
-EmailStateContext.displayName = "EmailStateContext";
-PasswordStateContext.displayName = "PasswordStateContext";
+SignUpContext.displayName = "SignUpContext";
 
-export const EmailStateProvider = ({ children }) => {
+export const SignUpContextProvider = ({ children }) => {
   const [email, setEmail] = useState("");
-  const emailStateValue = useMemo(
+  const [password, setPassword] = useState("");
+  const isAvailableSignUp = useCallback(() => {
+    if (email.length < 1) return false;
+    if (password.length < 1) return false;
+    if (isEmail(email) && isPassword(password)) return true;
+    return false;
+  }, [email, password]);
+
+  const signUpStateValue = useMemo(
     () => ({
       email,
       updateEmail: setEmail,
-    }),
-    [email]
-  );
-
-  return (
-    <EmailStateContext.Provider value={emailStateValue}>
-      {children}
-    </EmailStateContext.Provider>
-  );
-};
-
-export function useEmailState() {
-  const emailState = useContext(EmailStateContext);
-
-  if (!emailState) {
-    throw new ReferenceError(
-      "useEmailState 훅은 EmailState 컨텍스트 내부에서만 호출해야 합니다."
-    );
-  }
-
-  return emailState;
-}
-
-export const PasswordStateProvider = ({ children }) => {
-  const [password, setPassword] = useState("");
-  const passwordStateValue = useMemo(
-    () => ({
       password,
       updatePassword: setPassword,
+      isAvailableSignUp,
     }),
-    [password]
+    [email, password]
   );
 
   return (
-    <PasswordStateContext.Provider value={passwordStateValue}>
+    <SignUpContext.Provider value={signUpStateValue}>
       {children}
-    </PasswordStateContext.Provider>
+    </SignUpContext.Provider>
   );
 };
 
-PasswordStateContext.propTypes = {
+SignUpContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export function usePasswordState() {
-  const passwordState = useContext(PasswordStateContext);
+export function useSignUpState() {
+  const signUpState = useContext(SignUpContext);
 
-  if (!passwordState) {
+  if (!signUpState) {
     throw new ReferenceError(
-      "usePasswordState 훅은 PasswordState 컨텍스트 내부에서만 호출해야 합니다."
+      "useSignUpState 훅은 SignUpState 컨텍스트 내부에서만 호출해야 합니다."
     );
   }
 
-  return passwordState;
+  return signUpState;
 }

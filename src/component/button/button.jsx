@@ -1,26 +1,30 @@
 import PropTypes from "prop-types";
 
 import classes from "./button.module.css";
+import { memo } from "react";
 
-// function getIsSecondary(isSecondary) {
-//   if (isSecondary) return "secondary";
-
-//   return "primary";
-// }
-
-export function Button({ isSecondary, className, children, ...restProps }) {
-  // const combineClassNames = `${classes.Button} ${classes[getIsSecondary(isSecondary)]} ${className}`.trim();
+export const Button = memo(function Button({
+  className,
+  children,
+  isAvailableSignUp,
+  ...restProps
+}) {
   const combineClassNames = `${classes.Button} ${className}`.trim();
 
   return (
-    <button className={combineClassNames} type="button" {...restProps}>
+    <button
+      type="button"
+      className={combineClassNames}
+      disabled={!isAvailableSignUp}
+      {...restProps}
+    >
       {children}
     </button>
   );
-}
+});
 
 Button.defaultProps = {
-  isSecondary: false,
+  isAvailableSignUp: false,
 };
 
 Button.propTypes = {

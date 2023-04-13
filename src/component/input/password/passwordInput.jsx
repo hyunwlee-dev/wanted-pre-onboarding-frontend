@@ -1,34 +1,29 @@
 import PropTypes from "prop-types";
 import classes from "./passwordInput.module.css";
 import { debounce } from "../../../utils/debounce";
-import { useMemo } from "react";
-import { usePasswordState } from "../../../contexts/signUpState";
+import { memo } from "react";
 
-export function PasswordInput({
+export const PasswordInput = memo(function PasswordInput({
+  value,
   id: useId,
+  onChange,
   className,
   placeholder,
   ...restProps
 }) {
   const combineClassName = `${classes.Input} ${className}`.trim();
-  const { password, updatePassword } = usePasswordState();
-
-  return useMemo(
-    () => (
-      <input
-        className={combineClassName}
-        id={useId}
-        maxLength="16"
-        placeholder={placeholder}
-        type="password"
-        value={password}
-        onChange={(e) => debounce(updatePassword(e.target.value), 500)}
-        {...restProps}
-      />
-    ),
-    [password]
+  return (
+    <input
+      className={combineClassName}
+      id={useId}
+      placeholder={placeholder}
+      type="password"
+      value={value}
+      onChange={(e) => debounce(onChange(e.target.value), 500)}
+      {...restProps}
+    />
   );
-}
+});
 
 PasswordInput.prototype = {
   id: PropTypes.string,

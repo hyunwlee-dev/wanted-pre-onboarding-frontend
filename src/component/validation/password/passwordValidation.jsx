@@ -1,11 +1,9 @@
 import { Fragment, useMemo } from "react";
 
 import classes from "./passwordValidation.module.css";
-import { usePasswordState } from "../../../contexts/signUpState";
 import { isPassword } from "../../../utils/validator";
 
-export function PasswordValidation({ className }) {
-  const { password } = usePasswordState();
+export function PasswordValidation({ className, password }) {
   const checkIsValidatePw = useMemo(() => {
     if (password.length > 0 && !isPassword(password)) return classes.invalid;
     return classes.valid;

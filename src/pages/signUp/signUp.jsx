@@ -1,24 +1,22 @@
-import { useId, Fragment, useCallback, useState, useMemo } from "react";
 import classes from "./signUp.module.css";
+import { useId, Fragment, useMemo } from "react";
 import { Label } from "../../component/label/label";
-import { Fieldset } from "../../component/fieldset/fieldset";
-import { PasswordInput } from "../../component/input/password/passwordInput";
-import { EmailInput } from "../../component/input/email/emailInput";
 import { Button } from "../../component/button/button";
+import { useSignUpState } from "../../contexts/signUpState";
+import { Fieldset } from "../../component/fieldset/fieldset";
 import { BaseLayout } from "../../component/layout/baseLayout";
 import { Container } from "../../component/container/contianer";
-import { PasswordValidation } from "../../component/validation/password/passwordValidation";
+import { EmailInput } from "../../component/input/email/emailInput";
+import { PasswordInput } from "../../component/input/password/passwordInput";
 import { EmailValidation } from "../../component/validation/email/emailValidation";
-import { useGlobalState } from "../../contexts/globalState";
-import {
-  EmailStateProvider,
-  PasswordStateProvider,
-  useEmailState,
-} from "../../contexts/signUpState";
+import { PasswordValidation } from "../../component/validation/password/passwordValidation";
 
 export function SignUp() {
   const emailId = useId();
   const passwordId = useId();
+  const { email, updateEmail, password, updatePassword, isAvailableSignUp } =
+    useSignUpState();
+
   return (
     <BaseLayout className={classes.BaseLayout}>
       <div className={classes.SignUp}>
@@ -34,15 +32,15 @@ export function SignUp() {
                 이메일
               </Label>
               <Container className={classes.EmailPart}>
-                <EmailStateProvider>
-                  <EmailInput
-                    className={classes.EmailInput}
-                    data-testid="email-input"
-                    id={emailId}
-                    placeholder="예) wanted@wanted.com"
-                  />
-                  <EmailValidation />
-                </EmailStateProvider>
+                <EmailInput
+                  className={classes.EmailInput}
+                  data-testid="email-input"
+                  id={emailId}
+                  value={email}
+                  onChange={updateEmail}
+                  placeholder="예) wanted@wanted.com"
+                />
+                <EmailValidation email={email} />
               </Container>
             </Container>
 
@@ -55,21 +53,22 @@ export function SignUp() {
                 비밀번호
               </Label>
               <Container className={classes.PwPart}>
-                <PasswordStateProvider>
-                  <PasswordInput
-                    className={classes.PwInput}
-                    data-testid="password-input"
-                    id={passwordId}
-                    placeholder="비밀번호를 입력해주세요."
-                  />
-                  <PasswordValidation />
-                </PasswordStateProvider>
+                <PasswordInput
+                  className={classes.PwInput}
+                  data-testid="password-input"
+                  id={passwordId}
+                  value={password}
+                  onChange={updatePassword}
+                  placeholder="비밀번호를 입력해주세요."
+                />
+                <PasswordValidation password={password} />
               </Container>
             </Container>
             <Container className={classes.ButtonWrapper}>
               <Button
                 className={classes.SubmitButton}
                 data-testid="signup-button"
+                isAvailableSignUp={isAvailableSignUp()}
               >
                 가입하기
               </Button>
