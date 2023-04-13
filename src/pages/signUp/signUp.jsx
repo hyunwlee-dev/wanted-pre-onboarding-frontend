@@ -1,5 +1,5 @@
 import classes from "./signUp.module.css";
-import { useId, Fragment, useMemo } from "react";
+import { useId, Fragment, useMemo, useCallback, useEffect } from "react";
 import { Label } from "../../component/label/label";
 import { Button } from "../../component/button/button";
 import { useSignUpState } from "../../contexts/signUpState";
@@ -11,12 +11,23 @@ import { PasswordInput } from "../../component/input/password/passwordInput";
 import { EmailValidation } from "../../component/validation/email/emailValidation";
 import { PasswordValidation } from "../../component/validation/password/passwordValidation";
 import { SignUpButton } from "../../component/button/signUp/signUpButton";
+import { useFetch } from "../../hooks/useFetch";
 
 export function SignUp() {
   const emailId = useId();
   const passwordId = useId();
   const { email, updateEmail, password, updatePassword, isAvailableSignUp } =
     useSignUpState();
+  const { isLoading, fetchData } = useFetch();
+
+  const handleClickSignUp = useCallback(async () => {
+    await fetchData(" http://localhost:8000/auth/signup", "POST", {
+      email,
+      password,
+    });
+  });
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <BaseLayout className={classes.BaseLayout}>
@@ -70,6 +81,7 @@ export function SignUp() {
                 className={classes.SubmitButton}
                 data-testid="signup-button"
                 isAvailableSignUp={isAvailableSignUp()}
+                onClick={handleClickSignUp}
               >
                 가입하기
               </SignUpButton>
