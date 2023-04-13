@@ -10,6 +10,7 @@ import { EmailInput } from "../../component/input/email/emailInput";
 import { PasswordInput } from "../../component/input/password/passwordInput";
 import { EmailValidation } from "../../component/validation/email/emailValidation";
 import { PasswordValidation } from "../../component/validation/password/passwordValidation";
+import { SignUpButton } from "../../component/button/signUp/signUpButton";
 
 export function SignUp() {
   const emailId = useId();
@@ -65,13 +66,13 @@ export function SignUp() {
               </Container>
             </Container>
             <Container className={classes.ButtonWrapper}>
-              <Button
+              <SignUpButton
                 className={classes.SubmitButton}
                 data-testid="signup-button"
                 isAvailableSignUp={isAvailableSignUp()}
               >
                 가입하기
-              </Button>
+              </SignUpButton>
             </Container>
           </Fieldset>
         </Container>
