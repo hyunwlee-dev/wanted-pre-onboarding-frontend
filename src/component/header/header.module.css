@@ -1,3 +1,7 @@
 .Header {
-  background-color: lightgreen;
+  background: url("../../assets/background-image.jpg") no-repeat 100% / 100%;
+}
+
+.HeaderWrapper {
+  height: 280px;
 }

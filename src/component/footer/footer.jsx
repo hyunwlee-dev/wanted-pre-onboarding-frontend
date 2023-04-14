@@ -1,17 +1,12 @@
 import classes from "./footer.module.css";
 import { Container } from "../container/contianer";
-import { useRef } from "react";
-
-/* Component ---------------------------------------------------------------- */
 
 export function Footer() {
-  const emailRef = useRef(null);
-
   return (
     <footer className={classes.Footer}>
-      <Container>
+      <Container className={classes.Container}>
         <small>
-          COPYRIGHT ALL RESERVED. {new Date().getFullYear()} &copy; EUID
+          COPYRIGHT ALL RESERVED. {new Date().getFullYear()} &copy; Hyunwlee
         </small>
       </Container>
     </footer>

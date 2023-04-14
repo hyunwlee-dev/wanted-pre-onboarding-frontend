@@ -1,0 +1,32 @@
+.Nav {
+  background-color: #fff;
+  border-bottom: 1px solid var(--color-gray-600);
+}
+
+.UnorderedList {
+  width: clamp(320px, 90vw, 1280px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 10px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.ListItem {
+  border: 1px solid black;
+  box-shadow: 6px 6px 2px 1px rgba(0, 0, 0, 0.1);
+  padding: 20px 70px;
+}
+
+.ListItem:hover {
+  text-decoration: line-through;
+  text-decoration-color: var(--color-blue);
+  text-decoration-thickness: 4px;
+}
+
+.Active {
+  text-decoration: line-through;
+  text-decoration-color: var(--color-blue);
+  text-decoration-thickness: 4px;
+}

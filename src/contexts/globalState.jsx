@@ -11,10 +11,10 @@ export const GlobalStateProvider = ({ children }) => {
   );
 
   const [navList, setNavList] = useState([
-    { id: "home", to: "./home", text: "홈", active: false },
-    { id: "signup", to: "./signup", text: "회원가입", active: true },
-    { id: "signin", to: "./signin", text: "로그인", active: false },
-    { id: "todos", to: "./todos", text: "할 일 목록", active: false },
+    { id: "home", to: "/", text: "홈", active: true },
+    { id: "signup", to: "/signup", text: "회원가입", active: false },
+    { id: "signin", to: "/signin", text: "로그인", active: false },
+    { id: "todos", to: "/", text: "할 일 목록", active: false },
   ]);
 
   const globalStateValue = useMemo(

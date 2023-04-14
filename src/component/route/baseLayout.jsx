@@ -1,8 +1,9 @@
 import { Header } from "../header/header";
 import { Footer } from "../footer/footer";
+import { Outlet } from "react-router-dom";
 import { node, string } from "prop-types";
-import { Container } from "../container/contianer";
 import classes from "./baseLayout.module.css";
+import { Container } from "../container/contianer";
 
 /* Component ---------------------------------------------------------------- */
 
@@ -13,14 +14,14 @@ export function BaseLayout({ className, children, ...restProps }) {
     <div className={combineClassNames} {...restProps}>
       <Header />
       <main className={classes.Main}>
-        <Container>{children}</Container>
+        <Container className={classes.Container}>
+          <Outlet />
+        </Container>
       </main>
       <Footer />
     </div>
   );
 }
-
-/* Props -------------------------------------------------------------------- */
 
 BaseLayout.defaultProps = {
   className: "",
