@@ -12,6 +12,7 @@ import { EmailValidation } from "../../component/validation/email/emailValidatio
 import { PasswordValidation } from "../../component/validation/password/passwordValidation";
 import { SignUpButton } from "../../component/button/signUp/signUpButton";
 import { useFetch } from "../../hooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 export function SignUp() {
   const emailId = useId();
@@ -19,12 +20,21 @@ export function SignUp() {
   const { email, updateEmail, password, updatePassword, isAvailableSignUp } =
     useSignUpState();
   const { isLoading, fetchData } = useFetch();
+  const navigate = useNavigate();
 
   const handleClickSignUp = useCallback(async () => {
-    await fetchData(" http://localhost:8000/auth/signup", "POST", {
-      email,
-      password,
-    });
+    try {
+      await fetchData(" http://localhost:8000/auth/signup", "POST", {
+        email,
+        password,
+      });
+      navigate("/signin");
+      alert(
+        `정상적으로 회원가입 되었습니다.\nemail: ${email}\npassword: ${password}`
+      );
+    } catch (e) {
+      throw new Error("e: " + e.message);
+    }
   });
 
   if (isLoading) return <div>Loading...</div>;
