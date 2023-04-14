@@ -9,6 +9,7 @@ import { NotFound } from "../pages/notFound/notFound";
 import { BaseLayout } from "../component/route/baseLayout";
 import { SignUpContextProvider } from "../contexts/signUpState";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { SignInContextProvider } from "../contexts/signInState";
 
 const router = createBrowserRouter([
   {
@@ -35,9 +36,11 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className={classes.App}>
-      <SignUpContextProvider>
-        <RouterProvider router={router} />
-      </SignUpContextProvider>
+      <SignInContextProvider>
+        <SignUpContextProvider>
+          <RouterProvider router={router} />
+        </SignUpContextProvider>
+      </SignInContextProvider>
     </div>
   );
 }
