@@ -44,7 +44,7 @@ function App() {
           element: <SignUp />,
         },
         {
-          path: "/todos",
+          path: "/todo",
           element: (
             <RequiredAuth>
               <Todos />

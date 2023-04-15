@@ -38,12 +38,12 @@ export default function SignIn() {
   useEffect(() => {
     if (data) {
       const updatedList = navList.map((list) => {
-        if (list.id === "todos") return { ...list, active: true };
+        if (list.id === "todo") return { ...list, active: true };
         return { ...list, active: false };
       });
       updateNavList(updatedList);
       saveToken(Object.entries(JSON.parse(data))[0]);
-      navigate("/todos");
+      navigate("/todo");
     }
   }, [data]);
 
