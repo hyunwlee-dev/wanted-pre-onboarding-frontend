@@ -1,7 +1,7 @@
 const {
   localStorage: storage,
-  JSON: {stringify: serialize, parse: deserialize}
-} = globalThis;
+  JSON: { stringify: serialize, parse: deserialize },
+} = window;
 
 export function saveStorage(key, value) {
   return new Promise((resolve) => {
