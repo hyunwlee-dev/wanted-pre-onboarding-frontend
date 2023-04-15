@@ -14,7 +14,7 @@ export const GlobalStateProvider = ({ children }) => {
     { id: "home", to: "/", text: "홈", active: true },
     { id: "signup", to: "/signup", text: "회원가입", active: false },
     { id: "signin", to: "/signin", text: "로그인", active: false },
-    { id: "todos", to: "/", text: "할 일 목록", active: false },
+    { id: "todos", to: "/todos", text: "할 일 목록", active: false },
   ]);
 
   const globalStateValue = useMemo(

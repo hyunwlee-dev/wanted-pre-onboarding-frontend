@@ -30,7 +30,7 @@ export function useFetch() {
     } finally {
       setIsLoading(false);
     }
-  });
+  }, []);
 
   return useMemo(
     () => ({

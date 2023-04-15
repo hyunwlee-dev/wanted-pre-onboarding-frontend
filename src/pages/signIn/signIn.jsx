@@ -9,13 +9,16 @@ import { PasswordInput } from "../../component/input/password/passwordInput";
 import { Button } from "../../component/button/button";
 import { useFetch } from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
-export function SignIn() {
+import { saveStorage } from "../../utils/storage";
+import { useGlobalState } from "../../contexts/globalState";
+export default function SignIn() {
   const emailId = useId();
   const passwordId = useId();
   const { email, updateEmail, password, updatePassword } = useSignInState();
 
-  const { isLoading, data, fetchData } = useFetch();
+  const { isLoading, error, data, fetchData } = useFetch();
   const navigate = useNavigate();
+  const { navList, updateNavList } = useGlobalState();
 
   const handleClickSignIn = useCallback(async () => {
     try {
@@ -24,13 +27,31 @@ export function SignIn() {
         password,
       });
     } catch (e) {
-      throw new Error("e: " + e.message);
+      throw new Error("e: ", e);
     }
   });
 
+  const saveToken = async (token) => {
+    await saveStorage(token[0], token[1]);
+  };
+
   useEffect(() => {
-    console.log("after signin data:", data);
+    if (data) {
+      const updatedList = navList.map((list) => {
+        if (list.id === "todos") return { ...list, active: true };
+        return { ...list, active: false };
+      });
+      updateNavList(updatedList);
+      saveToken(Object.entries(JSON.parse(data))[0]);
+      navigate("/todos");
+    }
   }, [data]);
+
+  useEffect(() => {
+    if (error) {
+      alert("아이디나 비밀번호를 확인해주세요!");
+    }
+  }, [error]);
 
   if (isLoading) return <div>Loading...</div>;
 

@@ -3,42 +3,65 @@ import "../styles/reset.css";
 import "../styles/global.css";
 import "../styles/theme.css";
 import classes from "./app.module.css";
-import { SignIn } from "../pages/signIn/signIn";
-import { SignUp } from "../pages/signUp/signUp";
-import { NotFound } from "../pages/notFound/notFound";
-import { BaseLayout } from "../component/route/baseLayout";
 import { SignUpContextProvider } from "../contexts/signUpState";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 import { SignInContextProvider } from "../contexts/signInState";
+import { Todos } from "../pages/todos/todos";
+import { lazy, Suspense } from "react";
+import { useGlobalState } from "../contexts/globalState";
+import { RequiredAuth } from "../component/route/auth/requireAuth";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <BaseLayout />,
-    errorElement: <NotFound />,
-    children: [
-      {
-        path: "/",
-        element: <>main</>,
-      },
-      {
-        path: "/signin",
-        element: <SignIn />,
-      },
-      {
-        path: "/signup",
-        element: <SignUp />,
-      },
-    ],
-  },
-]);
+const BaseLayout = lazy(() => import("../component/route/layout/baseLayout"));
+const SignIn = lazy(() => import("../pages/signIn/signIn"));
+const SignUp = lazy(() => import("../pages/signUp/signUp"));
+const NotFound = lazy(() => import("../pages/notFound/notFound"));
 
 function App() {
+  const { navList, updateNavList } = useGlobalState();
+  const auth = localStorage.getItem("access_token");
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <BaseLayout />,
+      errorElement: <NotFound />,
+      children: [
+        {
+          path: "/",
+          element: <>main</>,
+        },
+        {
+          path: "/signin",
+          element: <SignIn />,
+        },
+        {
+          path: "/signup",
+          element: <SignUp />,
+        },
+        {
+          path: "/todos",
+          element: (
+            <RequiredAuth>
+              <Todos />
+            </RequiredAuth>
+          ),
+        },
+      ],
+    },
+  ]);
+
   return (
     <div className={classes.App}>
       <SignInContextProvider>
         <SignUpContextProvider>
-          <RouterProvider router={router} />
+          <Suspense fallback="Loading results...">
+            <RouterProvider router={router} />
+          </Suspense>
         </SignUpContextProvider>
       </SignInContextProvider>
     </div>

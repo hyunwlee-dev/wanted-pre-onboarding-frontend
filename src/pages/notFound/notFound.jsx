@@ -1,7 +1,7 @@
 import { useRouteError } from "react-router-dom";
 import classes from "./notFound.module.css";
 
-export function NotFound() {
+export default function NotFound() {
   const error = useRouteError();
 
   return (

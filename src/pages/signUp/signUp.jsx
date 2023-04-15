@@ -4,7 +4,7 @@ import { Label } from "../../component/label/label";
 import { Button } from "../../component/button/button";
 import { useSignUpState } from "../../contexts/signUpState";
 import { Fieldset } from "../../component/fieldset/fieldset";
-import { BaseLayout } from "../../component/route/baseLayout";
+import { BaseLayout } from "../../component/route/layout/baseLayout";
 import { Container } from "../../component/container/contianer";
 import { EmailInput } from "../../component/input/email/emailInput";
 import { PasswordInput } from "../../component/input/password/passwordInput";
@@ -14,7 +14,7 @@ import { SignUpButton } from "../../component/button/signUp/signUpButton";
 import { useFetch } from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 
-export function SignUp() {
+export default function SignUp() {
   const emailId = useId();
   const passwordId = useId();
   const { email, updateEmail, password, updatePassword, isAvailableSignUp } =
