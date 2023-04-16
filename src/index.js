@@ -7,13 +7,22 @@ import { GlobalStateProvider } from "./contexts/globalState";
 import {
   EmailStateProvider,
   PasswordStateProvider,
+  SignUpContextProvider,
 } from "./contexts/signUpState";
+import { SignInContextProvider } from "./contexts/signInState";
+import { TodoContextProvider } from "./contexts/todoState";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <GlobalStateProvider>
-      <App />
+      <SignInContextProvider>
+        <SignUpContextProvider>
+          <TodoContextProvider>
+            <App />
+          </TodoContextProvider>
+        </SignUpContextProvider>
+      </SignInContextProvider>
     </GlobalStateProvider>
   </React.StrictMode>
 );

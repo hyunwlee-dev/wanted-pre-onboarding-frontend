@@ -25,6 +25,7 @@ export function useFetch() {
       if (!response.ok) throw new Error("Network response was not ok");
       const json = await response.json();
       setData(JSON.stringify(json));
+      return JSON.stringify(json);
     } catch (error) {
       setError(error);
     } finally {

@@ -24,7 +24,7 @@ export default function SignUp() {
 
   const handleClickSignUp = useCallback(async () => {
     try {
-      await fetchData(" http://localhost:8000/auth/signup", "POST", {
+      await fetchData("http://localhost:8000/auth/signup", "POST", {
         email,
         password,
       });

@@ -11,14 +11,14 @@ export function Nav({ as, headline, ...restProps }) {
       <A11yHidden as={as}>{headline}</A11yHidden>
       <ul className={classes.UnorderedList}>
         {list.map((item) => (
-          <Nav.Item key={item.id} item={item} />
+          <NavItem key={item.id} item={item} />
         ))}
       </ul>
     </nav>
   );
 }
 
-Nav.Item = function NavItem({ item }) {
+function NavItem({ item }) {
   const { navList, updateNavList } = useGlobalState();
   const navigate = useNavigate();
   const _checkIsActive = (value) => {
@@ -41,9 +41,9 @@ Nav.Item = function NavItem({ item }) {
       <li className={combineClassName(item.active)}>{item.text}</li>
     </Link>
   );
-};
+}
 
-Nav.Item.propTypes = {
+NavItem.propTypes = {
   item: exact({
     id: string,
     to: string,

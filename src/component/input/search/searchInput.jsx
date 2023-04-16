@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-import classes from "./emailInput.module.css";
+import classes from "./searchInput.module.css";
 import { debounce } from "../../../utils/debounce";
 import { memo, useMemo } from "react";
-export const EmailInput = memo(function EmailInput({
+export const SearchInput = memo(function SearchInput({
   value,
   onChange,
   id: useId,
@@ -25,7 +25,7 @@ export const EmailInput = memo(function EmailInput({
   );
 });
 
-EmailInput.prototype = {
+SearchInput.prototype = {
   id: PropTypes.string,
   className: PropTypes.string,
 };
