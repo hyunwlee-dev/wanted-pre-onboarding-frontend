@@ -3,7 +3,7 @@ import { useId, Fragment, useMemo, useCallback, useEffect } from "react";
 import { Label } from "../../component/label/label";
 import { Button } from "../../component/button/button";
 import { useSignUpState } from "../../contexts/signUpState";
-import { Fieldset } from "../../component/fieldset/fieldset";
+import { Fieldset } from "../../component/fieldSet/fieldSet";
 import { BaseLayout } from "../../component/route/layout/baseLayout";
 import { Container } from "../../component/container/contianer";
 import { EmailInput } from "../../component/input/email/emailInput";

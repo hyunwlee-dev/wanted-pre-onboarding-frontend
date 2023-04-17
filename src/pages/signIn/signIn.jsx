@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useId } from "react";
 import { Container } from "../../component/container/contianer";
-import { Fieldset } from "../../component/fieldset/fieldset";
+import { Fieldset } from "../../component/fieldSet/fieldSet";
 import classes from "./signIn.module.css";
 import { Label } from "../../component/label/label";
 import { EmailInput } from "../../component/input/email/emailInput";
