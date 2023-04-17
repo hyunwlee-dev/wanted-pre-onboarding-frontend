@@ -3,9 +3,20 @@ import { useGlobalState } from "../../contexts/globalState";
 import { A11yHidden } from "../a11yHidden/a11yHidden";
 import classes from "./nav.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export function Nav({ as, headline, ...restProps }) {
-  const { navList: list } = useGlobalState();
+  const { navList: list, updateNavList } = useGlobalState();
+  useEffect(() => {
+    if (localStorage.getItem("access_token")) {
+      updateNavList([
+        { id: "home", to: "/", text: "홈", active: false },
+        { id: "signout", to: "/signout", text: "로그아웃", active: false },
+        { id: "todo", to: "/todo", text: "할 일 목록", active: true },
+      ]);
+    }
+  }, []);
+
   return (
     <nav className={classes.Nav} {...restProps}>
       <A11yHidden as={as}>{headline}</A11yHidden>

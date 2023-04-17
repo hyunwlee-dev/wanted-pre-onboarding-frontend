@@ -21,6 +21,7 @@ import { TodoContextProvider } from "../contexts/todoState";
 const BaseLayout = lazy(() => import("../component/route/layout/baseLayout"));
 const SignIn = lazy(() => import("../pages/signIn/signIn"));
 const SignUp = lazy(() => import("../pages/signUp/signUp"));
+const SignOut = lazy(() => import("../pages/signOut/signOut"));
 const NotFound = lazy(() => import("../pages/notFound/notFound"));
 const Todos = lazy(() => import("../pages/todos/todos"));
 
@@ -47,8 +48,16 @@ function App() {
           element: <SignUp />,
         },
         {
+          path: "/signout",
+          element: <SignOut />,
+        },
+        {
           path: "/todo",
-          element: <Todos />,
+          element: (
+            <RequiredAuth>
+              <Todos />
+            </RequiredAuth>
+          ),
           // loader: loader,
         },
       ],

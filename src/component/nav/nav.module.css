@@ -24,9 +24,3 @@
   text-decoration-color: var(--color-blue);
   text-decoration-thickness: 4px;
 }
-
-.Active {
-  text-decoration: line-through;
-  text-decoration-color: var(--color-blue);
-  text-decoration-thickness: 4px;
-}

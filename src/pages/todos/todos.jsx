@@ -15,7 +15,7 @@ export default function Todos() {
   const modifyValue = useRef();
   let Authorization = localStorage.getItem("access_token");
   Authorization =
-    "Bearer " + Authorization.substring(1, Authorization.length - 1);
+    "Bearer " + Authorization?.substring(1, Authorization.length - 1);
 
   const handleSearchInput = (value) => {
     setTodo(value);
@@ -140,7 +140,7 @@ export default function Todos() {
   };
 
   useEffect(() => {
-    getTodoList();
+    if (localStorage.getItem("access_token")) getTodoList();
   }, [todo]);
 
   return (

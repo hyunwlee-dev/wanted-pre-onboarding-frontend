@@ -14,11 +14,10 @@ import { useGlobalState } from "../../contexts/globalState";
 export default function SignIn() {
   const emailId = useId();
   const passwordId = useId();
-  const { email, updateEmail, password, updatePassword } = useSignInState();
-
-  const { isLoading, error, data, fetchData } = useFetch();
   const navigate = useNavigate();
   const { navList, updateNavList } = useGlobalState();
+  const { isLoading, error, data, fetchData } = useFetch();
+  const { email, updateEmail, password, updatePassword } = useSignInState();
 
   const handleClickSignIn = useCallback(async () => {
     try {
@@ -41,11 +40,11 @@ export default function SignIn() {
 
   useEffect(() => {
     if (data) {
-      // const updatedList = navList.map((list) => {
-      //   if (list.id === "todo") return { ...list, active: true };
-      //   return { ...list, active: false };
-      // });
-      // updateNavList(updatedList);
+      updateNavList([
+        { id: "home", to: "/", text: "홈", active: false },
+        { id: "signout", to: "/signout", text: "로그아웃", active: false },
+        { id: "todo", to: "/todo", text: "할 일 목록", active: true },
+      ]);
       saveToken(Object.entries(JSON.parse(data))[0]);
       navigate("/todo");
     }
