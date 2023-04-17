@@ -24,10 +24,14 @@ export default function SignUp() {
 
   const handleClickSignUp = useCallback(async () => {
     try {
-      await fetchData("http://localhost:8000/auth/signup", "POST", {
-        email,
-        password,
-      });
+      await fetchData(
+        "https://www.pre-onboarding-selection-task.shop/auth/signup",
+        "POST",
+        {
+          email,
+          password,
+        }
+      );
       navigate("/signin");
       alert(
         `정상적으로 회원가입 되었습니다.\nemail: ${email}\npassword: ${password}`

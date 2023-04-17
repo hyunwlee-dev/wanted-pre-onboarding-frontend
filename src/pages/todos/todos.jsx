@@ -8,23 +8,23 @@ import { Label } from "../../component/label/label";
 import { useFetch } from "../../hooks/useFetch";
 import { CheckboxInput } from "../../component/input/checkbox/checkboxInput";
 export default function Todos() {
-  // const data = useLoaderData();
   const searchId = useId();
   const [todo, setTodo] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [willModifyItemIdx, setWillModifyItemIdx] = useState(null);
   const modifyValue = useRef();
+  let Authorization = localStorage.getItem("access_token");
+  Authorization =
+    "Bearer " + Authorization.substring(1, Authorization.length - 1);
 
   const handleSearchInput = (value) => {
-    console.log("value", value);
     setTodo(value);
   };
 
   const handleSubmit = async () => {
     const headers = {
       "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF1dG9hdXRvQGF1dG8uY29tIiwic3ViIjoxNywiaWF0IjoxNjgxNTcwMzU3LCJleHAiOjE2ODIxNzUxNTd9.VcOcWa8mMtfzcbeNp9kZ6nYbvusdTWLU0v9TX6aVEhc",
+      Authorization,
     };
     let options = {
       method: "POST",
@@ -33,21 +33,26 @@ export default function Todos() {
         todo: todo,
       }),
     };
-    const response = await fetch("http://localhost:8000/todos", options);
+    const response = await fetch(
+      "https://www.pre-onboarding-selection-task.shop/todos",
+      options
+    );
     setTodo("");
   };
 
   const getTodoList = async () => {
     const headers = {
       "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF1dG9hdXRvQGF1dG8uY29tIiwic3ViIjoxNywiaWF0IjoxNjgxNTcwMzU3LCJleHAiOjE2ODIxNzUxNTd9.VcOcWa8mMtfzcbeNp9kZ6nYbvusdTWLU0v9TX6aVEhc",
+      Authorization,
     };
     let options = {
       method: "GET",
       headers,
     };
-    const response = await fetch("http://localhost:8000/todos", options);
+    const response = await fetch(
+      "https://www.pre-onboarding-selection-task.shop/todos",
+      options
+    );
     if (!response.ok) {
       throw new Error({ message: "Sever Error" });
     }
@@ -58,8 +63,7 @@ export default function Todos() {
   const handleCheckbox = async (item, idx) => {
     const headers = {
       "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF1dG9hdXRvQGF1dG8uY29tIiwic3ViIjoxNywiaWF0IjoxNjgxNTcwMzU3LCJleHAiOjE2ODIxNzUxNTd9.VcOcWa8mMtfzcbeNp9kZ6nYbvusdTWLU0v9TX6aVEhc",
+      Authorization,
     };
     let options = {
       method: "PUT",
@@ -70,7 +74,7 @@ export default function Todos() {
       }),
     };
     const response = await fetch(
-      `http://localhost:8000/todos/${item.id}`,
+      `https://www.pre-onboarding-selection-task.shop/todos/${item.id}`,
       options
     );
     await getTodoList();
@@ -87,8 +91,7 @@ export default function Todos() {
   const handleModfiy = async (item) => {
     const headers = {
       "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF1dG9hdXRvQGF1dG8uY29tIiwic3ViIjoxNywiaWF0IjoxNjgxNTcwMzU3LCJleHAiOjE2ODIxNzUxNTd9.VcOcWa8mMtfzcbeNp9kZ6nYbvusdTWLU0v9TX6aVEhc",
+      Authorization,
     };
     let options = {
       method: "PUT",
@@ -99,25 +102,23 @@ export default function Todos() {
       }),
     };
     const response = await fetch(
-      `http://localhost:8000/todos/${item.id}`,
+      `https://www.pre-onboarding-selection-task.shop/todos/${item.id}`,
       options
     );
     await getTodoList();
   };
 
   const handleBtnDelete = async (item) => {
-    console.log("item", item);
     const headers = {
       "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImF1dG9hdXRvQGF1dG8uY29tIiwic3ViIjoxNywiaWF0IjoxNjgxNTcwMzU3LCJleHAiOjE2ODIxNzUxNTd9.VcOcWa8mMtfzcbeNp9kZ6nYbvusdTWLU0v9TX6aVEhc",
+      Authorization,
     };
     let options = {
       method: "DELETE",
       headers,
     };
     const response = await fetch(
-      `http://localhost:8000/todos/${item.id}`,
+      `https://www.pre-onboarding-selection-task.shop/todos/${item.id}`,
       options
     );
     getTodoList();
@@ -194,7 +195,7 @@ export default function Todos() {
 //     method: "GET",
 //     headers,
 //   };
-//   const response = await fetch("http://localhost:8000/todos", options);
+//   const response = await fetch("https://www.pre-onboarding-selection-task.shop/todos", options);
 //   if (!response.ok) {
 //     throw new Error({ message: "Sever Error" });
 //   } else {

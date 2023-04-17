@@ -22,10 +22,14 @@ export default function SignIn() {
 
   const handleClickSignIn = useCallback(async () => {
     try {
-      await fetchData("http://localhost:8000/auth/signin", "POST", {
-        email,
-        password,
-      });
+      await fetchData(
+        "https://www.pre-onboarding-selection-task.shop/auth/signin",
+        "POST",
+        {
+          email,
+          password,
+        }
+      );
     } catch (e) {
       throw new Error("e: ", e);
     }
