@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwanted_pre_onboarding_frontend=self.webpackChunkwanted_pre_onboarding_frontend||[]).push([[685],{8685:function(r,e,n){n.r(e),n.d(e,{default:function(){return d}});var s=n(7689),a={ErrorPage:"notFound_ErrorPage__gOvZf"},o=n(184);function d(){var r=(0,s.lk)();return(0,o.jsxs)("div",{className:a.ErrorPage,children:[(0,o.jsx)("h1",{children:"Oops!"}),(0,o.jsx)("p",{children:"Sorry. an expected error has occurred."}),(0,o.jsx)("p",{children:(0,o.jsx)("i",{children:r.statusText||r.message})})]})}}}]);
+//# sourceMappingURL=685.f2628374.chunk.js.map
