@@ -16,7 +16,7 @@ import { useGlobalState } from "../contexts/globalState";
 import { RequiredAuth } from "../component/route/auth/requireAuth";
 import { TodoContextProvider } from "../contexts/todoState";
 
-import { loader } from "../pages/todos/todos";
+// import { loader } from "../pages/todos/todos";
 
 const BaseLayout = lazy(() => import("../component/route/layout/baseLayout"));
 const SignIn = lazy(() => import("../pages/signIn/signIn"));
@@ -49,7 +49,7 @@ function App() {
         {
           path: "/todo",
           element: <Todos />,
-          loader: loader,
+          // loader: loader,
         },
       ],
     },

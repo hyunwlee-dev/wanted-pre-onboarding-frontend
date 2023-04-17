@@ -25,19 +25,20 @@ function NavItem({ item }) {
     if (value) return classes["Active"];
     return "";
   };
-  const handleClickNavItem = (id) => {
-    const updatedList = navList.map((list) => {
-      if (list.id === id) return { ...list, active: true };
-      return { ...list, active: false };
-    });
-    updateNavList(updatedList);
-  };
+  // const handleClickNavItem = (id) => {
+  //   const updatedList = navList.map((list) => {
+  //     if (list.id === id) return { ...list, active: true };
+  //     return { ...list, active: false };
+  //   });
+  //   updateNavList(updatedList);
+  // };
 
   const combineClassName = (value) => {
     return `${classes.ListItem} ${_checkIsActive(value)}`;
   };
   return (
-    <Link to={item.to} onClick={() => handleClickNavItem(item.id)}>
+    // <Link to={item.to} onClick={() => handleClickNavItem(item.id)}>
+    <Link to={item.to}>
       <li className={combineClassName(item.active)}>{item.text}</li>
     </Link>
   );

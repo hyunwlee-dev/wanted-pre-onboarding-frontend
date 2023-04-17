@@ -37,11 +37,11 @@ export default function SignIn() {
 
   useEffect(() => {
     if (data) {
-      const updatedList = navList.map((list) => {
-        if (list.id === "todo") return { ...list, active: true };
-        return { ...list, active: false };
-      });
-      updateNavList(updatedList);
+      // const updatedList = navList.map((list) => {
+      //   if (list.id === "todo") return { ...list, active: true };
+      //   return { ...list, active: false };
+      // });
+      // updateNavList(updatedList);
       saveToken(Object.entries(JSON.parse(data))[0]);
       navigate("/todo");
     }
