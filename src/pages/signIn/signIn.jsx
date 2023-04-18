@@ -105,7 +105,7 @@ export default function SignIn() {
           <Container className={classes.ButtonWrapper}>
             <Button
               className={classes.LoginButton}
-              data-testid="signup-button"
+              data-testid="signin-button"
               onClick={handleClickSignIn}
             >
               로그인

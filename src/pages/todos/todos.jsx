@@ -124,14 +124,23 @@ export default function Todos() {
     getTodoList();
   };
 
+  const handleBtnCancel = () => {
+    setWillModifyItemIdx(null);
+  }
+
   const checkNeedModifyInput = (item, idx) => {
     if (willModifyItemIdx !== idx) return item.todo;
-    return <input type="text" onChange={(e) => handleModifyValue(e)} />;
+    return <input type="text" data-testid="modify-input" onChange={(e) => handleModifyValue(e)} />;
   };
 
-  const checkNeedSubmitButton = (idx) => {
-    if (willModifyItemIdx !== idx) return "수정";
-    return "제출";
+  const checkNeedSubmitButton = (item, idx) => {
+    if (willModifyItemIdx !== idx) return (<Button data-testid='modify-button' onClick={() => handleBtnModify(item, idx)}>수정</Button>)
+    return (<Button data-testid='submit-button' onClick={() => handleBtnModify(item, idx)}>제출</Button>);
+  };
+  
+  const checkNeedCancelButton = (item, idx) => {
+    if (willModifyItemIdx !== idx) return (<Button data-testid='delete-button' onClick={() => handleBtnDelete(item)}>삭제</Button>);
+    return (<Button data-testid='cancel-button' onClick={() => handleBtnCancel(item)}>취소</Button>);
   };
 
   const handleModifyValue = (e) => {
@@ -153,9 +162,10 @@ export default function Todos() {
         classes={classes.SearchInput}
         id={searchId}
         value={todo}
+        data-testid="new-todo-input"
         onChange={handleSearchInput}
       />
-      <Button onClick={handleSubmit}>제출</Button>
+      <Button onClick={handleSubmit} data-testid="new-todo-add-button">제출</Button>
       <ul>
         {todoList.map((item, idx) => {
           return (
@@ -165,18 +175,8 @@ export default function Todos() {
                 onChange={() => handleCheckbox(item, idx)}
               />
               <span>{checkNeedModifyInput(item, idx)}</span>
-              <Button
-                data-testid="modify-button"
-                onClick={() => handleBtnModify(item, idx)}
-              >
-                {checkNeedSubmitButton(idx)}
-              </Button>
-              <Button
-                data-testid="delete-button"
-                onClick={() => handleBtnDelete(item)}
-              >
-                삭제
-              </Button>
+              {checkNeedSubmitButton(item, idx)}
+              {checkNeedCancelButton(item, idx)}
             </li>
           );
         })}
