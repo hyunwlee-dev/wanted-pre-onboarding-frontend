@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useState, useContext, useMemo } from "react";
 
 const SignInStateContext = createContext();
 SignInStateContext.displayName = 'SignInStateContext';
@@ -14,9 +14,9 @@ const SignInContextProvider = ({ children }) => {
   }), [email, password]);
 
   return (
-    <SignInContext.Provider value={signInStateValue}>
+    <SignInStateContext.Provider value={signInStateValue}>
       {children}
-    </SignInContext.Provider>
+    </SignInStateContext.Provider>
   )
 }
 

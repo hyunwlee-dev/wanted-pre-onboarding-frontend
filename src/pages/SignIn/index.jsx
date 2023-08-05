@@ -1,4 +1,5 @@
 import { A11yHidden } from '../../components';
+import { AuthFormContainer } from '../../containers';
 import { useDocumentTitle } from '../../hooks';
 import classes from './signIn.module.css';
 
@@ -8,6 +9,7 @@ const SignIn = () => {
     <div className={classes.siginIn}>
       <A11yHidden as='h1'>login page</A11yHidden>
       로그인
+      <AuthFormContainer/>
     </div>
   )
 }
