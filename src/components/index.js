@@ -4,4 +4,4 @@ export { Header } from './Header';
 export { Footer } from './Footer';
 export { Nav } from './Nav';
 export { Container } from './Container';
-export { SignInForm, SignUpForm } from './Form';
+export { AuthForm } from './Form';
