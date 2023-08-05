@@ -1,4 +1,10 @@
 .footer {
   background: #212121;
-  padding: 2rem 4rem;
+  padding: 1rem 4rem;
+  display: flex;
+  gap: 0.25rem;
+  flex-flow: column nowrap;
+  > a {
+    color: inherit; 
+  }
 }
