@@ -1,2 +1,13 @@
 .todo {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  &>h1 {
+    padding: 2rem 0;
+    text-align: center;
+  }
 }
+
+

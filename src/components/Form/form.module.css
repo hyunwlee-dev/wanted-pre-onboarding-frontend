@@ -1,6 +1,11 @@
-.form {
-}
-
 .fieldset {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
   border: 0;
+  >button {
+    padding: 1rem 0;
+    cursor: pointer;
+  }
 }

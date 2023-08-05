@@ -5,9 +5,9 @@ import { A11yHidden } from '../../components';
 const Welcome = () => {
   useDocumentTitle('home page');
   return (
-    <div classes={classes.welcome}>
+    <div className={classes.welcome}>
       <A11yHidden as='h1'>home page</A11yHidden>
-      {"반갑습니다!!"}
+      <div className={classes.text}>{"Welcome, from hyunwlee"}</div>
     </div>
   )
 }

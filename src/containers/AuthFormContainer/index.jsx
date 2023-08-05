@@ -1,9 +1,9 @@
 import { useId } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Container, SignInForm, SignUpForm } from '../../components';
+import { Container } from '../../components';
 import { AuthForm } from '../../components/Form';
 import { useAuthFormState } from '../../contexts';
-import classess from './authFormContainer.module.css';
+import classes from './authFormContainer.module.css';
 
 const AuthFormContainer = ({ children, ...restProps }) => {
   const {pathname} = useLocation();
@@ -20,7 +20,7 @@ const AuthFormContainer = ({ children, ...restProps }) => {
   const signUpEmailId = useId();
   const signUpPasswordId = useId();
   return (
-    <Container className={classess.authFormContainer}>
+    <Container className={classes.authFormContainer} {...restProps}>
       {pathname === '/signin' &&
         <>
           <AuthForm 

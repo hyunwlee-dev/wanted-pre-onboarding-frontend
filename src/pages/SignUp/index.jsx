@@ -1,6 +1,5 @@
 import { useDocumentTitle } from '../../hooks';
 import classes from './signUp.module.css';
-import { A11yHidden } from '../../components/';
 import { AuthFormContainer } from '../../containers/';
 
 const SignUp = () => {
