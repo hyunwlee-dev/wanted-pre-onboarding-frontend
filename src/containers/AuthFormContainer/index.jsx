@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { Container } from '../../components';
+import { Container, SignInForm, SignUpForm } from '../../components';
 import { useSignInState } from '../../contexts';
 import classess from './authFormContainer.module.css';
 
@@ -8,7 +8,8 @@ const AuthFormContainer = ({ children, ...restProps }) => {
   const {email, setEmail, password, setPassword} = useSignInState();
   return (
     <Container className={classess.authFormContainer}>
-      {children}
+    {pathname === '/signin' && <SignInForm/>}
+    {pathname === '/signup' && <SignUpForm/>}
     </Container>
   );
 }
