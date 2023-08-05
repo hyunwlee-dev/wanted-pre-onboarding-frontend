@@ -1,0 +1,12 @@
+.baseLayout {
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100vh;
+  > header, footer {
+    color: white;
+  }
+}
+
+.main {
+  flex: 1 1 auto;
+}
