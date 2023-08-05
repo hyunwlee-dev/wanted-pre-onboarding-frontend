@@ -1,0 +1,22 @@
+.ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.li {
+  flex: 0 0 auto;
+  width: 6rem;
+  padding: 0.25rem 0;
+  list-style: none; 
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid white;
+  &:hover {
+    opacity: 0.9;
+    background: #E4E4E4;
+    color: #212121;
+  }
+}

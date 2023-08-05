@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <Suspense fallback={'loading...'}>
+      <Suspense fallback={<div role='alert'>'loading...'</div>}>
         <RouterProvider router={router}/>
       </Suspense>
     </div>
