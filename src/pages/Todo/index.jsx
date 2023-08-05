@@ -6,8 +6,7 @@ const Todo = () => {
   useDocumentTitle('todo page');
   return (
     <div className={classes.todo}>
-      <A11yHidden as='h1'>todo page</A11yHidden>
-      오늘의 할일
+      <h1>todo page</h1>
     </div>
   )
 }

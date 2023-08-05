@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container, SignInForm, SignUpForm } from '../../components';
 import { AuthForm } from '../../components/Form';
@@ -14,23 +15,37 @@ const AuthFormContainer = ({ children, ...restProps }) => {
   const onSignInPasswordChange = (e) => {setSignInPassword(e.target.value)};
   const onSignUpEmailChange = (e) => {setSignUpEmail(e.target.value)};
   const onSignUpPasswordChange = (e) => {setSignUpPassword(e.target.value)};
+  const signInEmailId = useId();
+  const signInPasswordId = useId();
+  const signUpEmailId = useId();
+  const signUpPasswordId = useId();
   return (
     <Container className={classess.authFormContainer}>
       {pathname === '/signin' &&
-        <AuthForm 
-          email={signInEmail}
-          password={signInPassword}
-          onEmailChange={onSignInEmailChange}
-          onPasswordChange={onSignInPasswordChange}  
-        />
+        <>
+          <AuthForm 
+            emailId={signInEmailId}
+            passwordId={signInPasswordId}
+            email={signInEmail}
+            password={signInPassword}
+            onEmailChange={onSignInEmailChange}
+            onPasswordChange={onSignInPasswordChange}  
+            buttonText={'로그인'}
+          />
+        </>
       }
       {pathname === '/signup' &&
-        <AuthForm 
-          email={signUpEmail}
-          password={signUpPassword}
-          onEmailChange={onSignUpEmailChange}
-          onPasswordChange={onSignUpPasswordChange}  
-        />
+        <>
+          <AuthForm
+            emailId={signUpEmailId}
+            passwordId={signUpPasswordId}
+            email={signUpEmail}
+            password={signUpPassword}
+            onEmailChange={onSignUpEmailChange}
+            onPasswordChange={onSignUpPasswordChange}  
+            buttonText={'회원가입'}
+          />
+        </>
       }
     </Container>
   );

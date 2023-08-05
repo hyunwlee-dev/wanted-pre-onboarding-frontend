@@ -7,7 +7,7 @@ const SignUp = () => {
   useDocumentTitle('create account page');
   return (
     <div className={classes.signUp}>
-      <A11yHidden as='h1'>create account page</A11yHidden>
+      <h1>create account page</h1>
       <AuthFormContainer>
         회원가입
       </AuthFormContainer>

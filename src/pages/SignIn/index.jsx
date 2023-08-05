@@ -7,7 +7,7 @@ const SignIn = () => {
   useDocumentTitle('login page');
   return (
     <div className={classes.siginIn}>
-      <A11yHidden as='h1'>login page</A11yHidden>
+      <h1>login page</h1>
       <AuthFormContainer>
         로그인
       </AuthFormContainer>
