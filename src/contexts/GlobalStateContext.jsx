@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useMemo } from "react";
 
 const GlobalStateContext = createContext();
+GlobalStateContext.displayName = 'GlobalStateContext';
 
 const GlobalStateProvider = ({ children }) => {
   const [navList, setNavList] = useState([
@@ -9,7 +10,6 @@ const GlobalStateProvider = ({ children }) => {
     { id: 'signup', to: '/signup', text: '회원가입'},
     { id: 'todo', to: '/todo', text: '할 일 목록'},
   ]);
-
   const globalStateValue = useMemo(
     () => ({
       navList,
