@@ -8,8 +8,9 @@ const SignIn = () => {
   return (
     <div className={classes.siginIn}>
       <A11yHidden as='h1'>login page</A11yHidden>
-      로그인
-      <AuthFormContainer/>
+      <AuthFormContainer>
+        로그인
+      </AuthFormContainer>
     </div>
   )
 }

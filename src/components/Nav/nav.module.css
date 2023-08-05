@@ -1,9 +1,13 @@
 .ul {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-around;
-  align-items: center;
-  gap: 0.625rem;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0 auto;
+  @media (min-width: 768px) {
+    justify-content: center;
+    gap: 4rem;
+  }
 }
 
 .li {

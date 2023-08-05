@@ -4,12 +4,13 @@ import { A11yHidden } from '../../components/';
 import { AuthFormContainer } from '../../containers/';
 
 const SignUp = () => {
-  useDocumentTitle('create account page')
+  useDocumentTitle('create account page');
   return (
     <div className={classes.signUp}>
       <A11yHidden as='h1'>create account page</A11yHidden>
-      회원가입
-      <AuthFormContainer/>
+      <AuthFormContainer>
+        회원가입
+      </AuthFormContainer>
     </div>
   )
 }
