@@ -5,6 +5,7 @@ import { Container, AuthForm } from '../../components';
 import { useAuthFormState } from '../../contexts';
 import { useFetch, useLocalStorage } from '../../hooks';
 import classes from './authFormContainer.module.css';
+import { validator } from '../../utils';
 
 const AuthFormContainer = ({ children, ...restProps }) => {
   const navigate = useNavigate();
@@ -53,7 +54,15 @@ const AuthFormContainer = ({ children, ...restProps }) => {
           onEmailChange={onSignInEmailChange}
           onPasswordChange={onSignInPasswordChange}
           onSubmit={login}
-          buttonText={'로그인'}
+          buttonSide={
+            <button
+              data-testid='signin-button'
+              type='submit'
+              disabled={!validator.isEmail(signInEmail) || !validator.isPassword(signInPassword)}
+            >
+              로그인
+            </button>
+          }
         />
       }
       {pathname === '/signup' &&
@@ -65,7 +74,15 @@ const AuthFormContainer = ({ children, ...restProps }) => {
           onEmailChange={onSignUpEmailChange}
           onPasswordChange={onSignUpPasswordChange}  
           onSubmit={createAccount}
-          buttonText={'회원가입'}
+          buttonSide={
+            <button
+              data-testid='signup-button'
+              type='submit'
+              disabled={!validator.isEmail(signUpEmail) || !validator.isPassword(signUpPassword)}
+            >
+              회원가입
+            </button>
+          }
         />
       }
     {!isLoading && error && <div role='alert' className={classes.error}>{error}</div>}

@@ -9,3 +9,4 @@ const axiosInstance = axios.create({
 });
 
 export { DEV_ENDPOINT, PROD_ENDPOINT, axiosInstance };
+export { validator } from './validator';

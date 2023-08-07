@@ -9,7 +9,7 @@ const AuthForm = ({
   onEmailChange,
   onPasswordChange,
   onSubmit,
-  buttonText = '' 
+  buttonSide,
 }) => {
   return (
     <Form 
@@ -19,13 +19,13 @@ const AuthForm = ({
     >
       <div className={classes.flexWrapper}>
         <label htmlFor={emailId}>이메일</label>
-        <input id={emailId} type='text' value={email} onChange={onEmailChange}/>
+        <input data-testid='email-input' id={emailId} type='text' value={email} onChange={onEmailChange}/>
       </div>
       <div className={classes.flexWrapper}>
         <label htmlFor={passwordId}>비밀번호</label>
-        <input id={passwordId} type='password' value={password} onChange={onPasswordChange}/>
+        <input data-testid='password-input' id={passwordId} type='password' value={password} onChange={onPasswordChange}/>
       </div>
-      <button type='submit'>{buttonText}</button>
+      {buttonSide}
     </Form>
   )
 }
