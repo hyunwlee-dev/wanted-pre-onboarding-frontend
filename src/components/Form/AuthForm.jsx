@@ -8,12 +8,13 @@ const AuthForm = ({
   password,
   onEmailChange,
   onPasswordChange,
+  onSubmit,
   buttonText = '' 
 }) => {
   return (
     <Form 
       className={classes.authForm} 
-      action={() => {}} 
+      onSubmit={onSubmit} 
       legendText={'이메일, 비밀번호 입력 폼'}
     >
       <div className={classes.flexWrapper}>
