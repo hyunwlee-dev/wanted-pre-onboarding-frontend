@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { signIn, signUp } from '../../api';
 import { Container, AuthForm } from '../../components';
 import { useAuthFormState } from '../../contexts';
-import { useFetch } from '../../hooks';
+import { useFetch, useLocalStorage } from '../../hooks';
 import classes from './authFormContainer.module.css';
 
 const AuthFormContainer = ({ children, ...restProps }) => {
@@ -21,7 +21,8 @@ const AuthFormContainer = ({ children, ...restProps }) => {
   const signInPasswordId = useId();
   const signUpEmailId = useId();
   const signUpPasswordId = useId();
-  const { data, isLoading, error, fetchData } = useFetch();
+  const { isLoading, error, fetchData } = useFetch();
+  const { setValue } = useLocalStorage('access_token', null);
   const createAccount = useCallback(async (e) => {
     e.preventDefault();
     const response = await fetchData(signUp({email: signUpEmail, password: signUpPassword}));
@@ -34,10 +35,10 @@ const AuthFormContainer = ({ children, ...restProps }) => {
   const login = useCallback(async(e) => {
     e.preventDefault();
     const response = await fetchData(signIn({email: signInEmail, password: signInPassword}));
-    console.log('data', response.data.access_token);
     if (response.status === 200) {
       setSignInEmail('');
       setSignInPassword('');
+      setValue(response?.data?.access_token);
       navigate('/todo');
     }
   }, [signInEmail, signInPassword]);
@@ -67,8 +68,8 @@ const AuthFormContainer = ({ children, ...restProps }) => {
           buttonText={'회원가입'}
         />
       }
-    {!isLoading && error && <div className={classes.error}>{error}</div>}
-    {isLoading && <div className={classes.isLoading}>loading...</div>}
+    {!isLoading && error && <div role='alert' className={classes.error}>{error}</div>}
+    {isLoading && <div role='alert' className={classes.isLoading}>loading...</div>}
     </Container>
   );
 }
