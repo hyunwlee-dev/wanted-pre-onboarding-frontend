@@ -1,8 +1,8 @@
-import { A11yHidden } from '../../components';
-import { useDocumentTitle } from '../../hooks';
+import { useDocumentTitle, useLoginRedirect } from '../../hooks';
 import classes from './todo.module.css';
 
 const Todo = () => {
+  useLoginRedirect();
   useDocumentTitle('todo page');
   return (
     <div className={classes.todo}>
