@@ -32,7 +32,7 @@ const AuthFormContainer = ({ children, ...restProps }) => {
       setSignUpPassword('');
       navigate('/signin');
     }
-  }, [signUpEmail, signUpPassword]);
+  }, [fetchData, navigate, signUpEmail, signUpPassword, setSignUpEmail, setSignUpPassword]);
   const login = useCallback(async(e) => {
     e.preventDefault();
     const response = await fetchData(signIn({email: signInEmail, password: signInPassword}));
@@ -44,7 +44,7 @@ const AuthFormContainer = ({ children, ...restProps }) => {
         navigate(0);
       }
     }
-  }, [signInEmail, signInPassword]);
+  }, [fetchData, navigate, setValue, setSignInEmail, setSignInPassword, signInEmail, signInPassword]);
   return (
     <Container className={classes.authFormContainer} {...restProps}>
       {pathname === '/signin' &&

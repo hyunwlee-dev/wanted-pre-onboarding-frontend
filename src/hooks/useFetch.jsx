@@ -21,7 +21,7 @@ export function useFetch() {
     } finally {
       setIsLoading(false);
     }
-  }, [data, isLoading, error]);
+  }, []);
   return {
     data,
     error,

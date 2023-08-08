@@ -7,7 +7,7 @@ const useAuthRedirect = () => {
   const navigate = useNavigate();
   useEffect(() => {
     storedValue && navigate('/todo');
-  }, []);
+  }, [navigate, storedValue]);
 }
 
 export { useAuthRedirect };

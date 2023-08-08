@@ -11,7 +11,7 @@ const useTodoList = () => {
 
   useEffect(() => {
     getTodoList();
-  }, []);
+  }, [getTodoList]);
 
   return { todoList, setTodoList };
 };

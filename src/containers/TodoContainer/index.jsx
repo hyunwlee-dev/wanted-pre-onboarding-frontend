@@ -7,7 +7,7 @@ import classes from "./todoContainer.module.css";
 const TodoContainer = ({...restProps}) => {
   const { todoList, setTodoList }  = useTodoList();
   const [todo, setTodo] = useState('');
-  const { data, isLoading, error, fetchData } = useFetch();
+  const { isLoading, error, fetchData } = useFetch();
   const todoId = useId();
   const [pickedTodoIndex, setPickedTodoIndex] = useState(null);
   const pickTodoIndex = (id) => {setPickedTodoIndex(id)}
@@ -21,7 +21,7 @@ const TodoContainer = ({...restProps}) => {
         setTodoList((prev) => [...prev, response.data]);
       }
     },
-    [todo]
+    [todo, fetchData, setTodoList]
   );
   const onUpdate = useCallback(
     async (index, payload) => {
@@ -33,7 +33,7 @@ const TodoContainer = ({...restProps}) => {
         pickTodoIndex(null);
       }
     },
-    [todo]
+    [fetchData, setTodoList]
   );
   const onDelete = useCallback(
     async(id) => {
@@ -42,7 +42,7 @@ const TodoContainer = ({...restProps}) => {
         setTodoList((prev) => prev.filter((todo) => todo.id !== id));
       }
     },
-    [todo]
+    [fetchData, setTodoList]
   );
   return (
     <Container className={classes.todoContainer} {...restProps}>

@@ -7,7 +7,7 @@ const useLoginRedirect = () => {
   const { storedValue } = useLocalStorage('access_token');
   useEffect(() => {
     !storedValue && navigate('/signin');
-  }, []);
+  }, [navigate, storedValue]);
 }
 
 export { useLoginRedirect };
