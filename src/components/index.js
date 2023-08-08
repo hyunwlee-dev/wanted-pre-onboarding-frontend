@@ -6,3 +6,4 @@ export { Nav } from './Nav';
 export { Container } from './Container';
 export { AuthForm, Form, TodoAddForm } from './Form';
 export { TodoList } from './TodoList';
+export { TodoItem } from './TodoItem';

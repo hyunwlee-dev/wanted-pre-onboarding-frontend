@@ -9,8 +9,9 @@ export function useFetch() {
     setIsLoading(true);
     try {
       const response = await responsePromise;
-      if (response.status === 200 || response.status === 201) {
+      if (response.status === 200 || response.status === 201 || response.status === 204) {
         setData(response?.data);
+        setError(null);
       } else {
         setError(response?.response?.data?.message);
       }

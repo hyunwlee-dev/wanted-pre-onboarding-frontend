@@ -7,20 +7,9 @@
   gap: 4rem;
 }
 
-.todoAddForm {
-}
-
-.todoList {
-  background: green;
-  width: 32rem;
-}
-
 .isLoading, .error {
-  padding: 1rem 0;
   position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  top: 5rem;
   text-align: center;
 }
 

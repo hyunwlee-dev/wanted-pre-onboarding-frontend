@@ -8,10 +8,13 @@
     flex-flow: row nowrap;
     gap: 2rem;
     border: 0;
-    >button {
+    &>button {
       width: 8rem;
       padding: 1rem 0;
       cursor: pointer;
+    }
+    &>input {
+      text-indent: 1rem;
     }
   }
 }
