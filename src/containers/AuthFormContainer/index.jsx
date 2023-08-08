@@ -39,8 +39,10 @@ const AuthFormContainer = ({ children, ...restProps }) => {
     if (response.status === 200) {
       setSignInEmail('');
       setSignInPassword('');
-      setValue(response?.data?.access_token);
-      navigate('/todo');
+      if (response?.data?.access_token) {
+        setValue(response?.data?.access_token);
+        navigate(0);
+      }
     }
   }, [signInEmail, signInPassword]);
   return (

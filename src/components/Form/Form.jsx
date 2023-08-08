@@ -5,7 +5,7 @@ const Form = ({className = '', onSubmit, children, legendText = '', ...restProps
   const combinedClassName = `${className} ${classes.form}`.trim();
   return (
     <form onSubmit={onSubmit} className={combinedClassName} {...restProps}>
-      <fieldset className={classes.fieldset}>
+      <fieldset>
         <A11yHidden as='legend'>{legendText}</A11yHidden>
         {children} 
       </fieldset>

@@ -8,5 +8,22 @@ const axiosInstance = axios.create({
   },
 });
 
-export { DEV_ENDPOINT, PROD_ENDPOINT, axiosInstance };
+export const getToken = () => {
+  try {
+    const item = localStorage.getItem('access_token');
+    return JSON.parse(item);
+  } catch(error) {
+    console.log(error);
+  }
+};
+
+const axiosAuthInstance = axios.create({
+  baseURL: DEV_ENDPOINT,
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${getToken()}`,
+  },
+});
+
+export { DEV_ENDPOINT, PROD_ENDPOINT, axiosInstance, axiosAuthInstance };
 export { validator } from './validator';

@@ -1,0 +1,17 @@
+.todoAddForm {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 32rem;
+  &>fieldSet {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 2rem;
+    border: 0;
+    >button {
+      width: 8rem;
+      padding: 1rem 0;
+      cursor: pointer;
+    }
+  }
+}
